@@ -13,16 +13,18 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.css">
         
        
-         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+          
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.js"></script>
         <!-- Latest compiled and minified JavaScriSpt -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
         
-        <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-            <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+       
 </head>
 <body>
 <style type="text/css">
@@ -69,7 +71,8 @@
 	
    	margin-right: 10px;
    	display: inline-block;
-   	position: absolute;
+   	width: 320px;
+   	
    	margin-bottom: 15px;
    	box-shadow:0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 
@@ -123,13 +126,12 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
 }
 #col {
 	
-	width:100%;
+	width: 100%;
 	height:500px;
-	overflow: auto;
-	position:absolute;
-	z-index:1000;
-		
+	
+			
 }
+
 #contenedor5 {
     display: inline-block;
     width: 300px;
@@ -172,9 +174,7 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
 
 }
 
-#filtroFechas input {
-	margin-left: 25px;
-}
+
 #filtrosTipo label {
 	margin-left: 25px;
 }
@@ -199,6 +199,39 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
       background-color: #f9f9f9;
   }
   #slider-range .ui-slider-handle { border-color: grey}
+.fixed {  height: 500px; overflow:hidden;}
+.scrollit {  height: 500px;overflow-y:scroll; }
+.overlay {
+  border: 1px solid #b71c1c;
+  background: #d50000;
+  padding: 5px;
+  font-size: 17px;
+  color: white;
+  opacity: 0.8;
+
+}
+
+
+.overlay_arrow {
+  left: 50%;
+  margin-left: -16px;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.overlay_arrow.above {
+  bottom: -15px;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid #b71c1c;
+}
+.overlay_arrow.below {
+  top: -15px;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 16px solid #ff0000;
+}
+
 </style>
 <div class="row" id="cantactanos">
 	<center><p>(55) 2454-9691  Atenci&oacute;n al cliente</p><a><span class="glyphicon glyphicon-user"></span>Terminos y Condiciones</a></center>
@@ -246,9 +279,9 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
 		</div>
 	</div>
 	<br>
-<div class="row" id="contenedor">
+<div class="row" id="contenedor" style="background-color: #F5F5F5">
 	<div class="col-xs-12 col-xl-12 col-md-12">
-		<div class="row" style="background-color: #F5F5F5">
+		<div class="row" >
 		
 			<div class="row"> <!--Tabs de listar tabs -->
 				<div class="col-md-12">
@@ -262,7 +295,94 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
 			<!--Tabs de listar tabs -->
 
 			<div class="tab-content">
-    			<div id="home" class="tab-pane fade in active">
+				<div class="tab-pane fade in active" id="home">
+					<div class="row">
+						<div class="col-md-12">
+						
+							<div class="col-md-7 scrollit" id="scroll">
+						
+
+
+								<div class="row" id="filtroFechas">
+									<div class="col-md-12">
+										<div class="col-md-3" >
+						      				<input style="height: 35px;" name="searchbox" onfocus="if (this.value=='search') this.value = ''" type="text" placeholder="Fecha de llegada" id="datepicker">
+						      			</div>
+						      			<div class="col-md-3" >
+						      					<input style="height: 35px;" name="searchbox" onfocus="if (this.value=='search') this.value = ''" type="text" placeholder="Fecha de Salida" id="datepicker2">
+						      			</div>
+						      			<div class="col-md-3" >
+						      					<input style="height: 35px;" name="searchbox" onfocus="if (this.value=='search') this.value = ''" type="text" placeholder="Nº de Personas" id="personas">&nbsp;&nbsp;
+						      			</div>
+						      			<div class="col-md-3">
+						      					<a target="_blank" class="btn btn-default" onclick="buscarFechas()">Buscar</a>
+						      			</div>
+							      				
+									</div>
+									<hr>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-1"><label>Extras</label></div>
+			      						<div class="col-md-11">
+				      						<div class="col-md-3" style="background-color: 	 #d9d9d9; height: 50px;margin-right: 5px;">
+				      							<p id="c">Alberca&nbsp;<span class="glyphicon glyphicon-tint"></span>
+				      								<input type="checkbox" value="" id="albercaCheck">
+					      						</p>
+				      						</div>
+				      						<div class="col-md-3" style="background-color: 	 #d9d9d9; height: 50px;margin-right: 5px;">
+				      						<p id="c">Caldera&nbsp;<span class="glyphicon glyphicon-fire"></span><input type="checkbox" value="" id="calderacheck"></p></div>
+
+	      								</div>
+									</div>
+									<hr>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="amount" id="change">Rango de Precios:</label>
+      										<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+      										<script type="text/javascript">
+      											var slider = new Slider('#ex1', {
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
+});
+							</script>
+      										
+      						 			<hr>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										
+      							
+      						 			<hr>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										
+      							
+      						 			<hr>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-12" id="contenedor4" ></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5 fixed" id="fijo">
+							
+									<div id="col"></div>
+								
+						</div>
+					
+					</div>
+				</div>
+					
+				</div>
+    			<!--<div id="home" class="tab-pane fade in active">
     				<div class="row">
     					<div class="col-md-12" >
     						<div class="row">
@@ -327,14 +447,14 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
     	
      	</div>
     </div>
-    </div>
+    </div>-->
 
 
 
 
 
     <!--A qui empieza el siguiente tab para listar las casas -->
-    <div id="menu1" class="tab-pane fade">
+    <!--<div id="menu1" class="tab-pane fade">
       	<div class="row">
       	<div class="col-md-12">
       		<div class="col-md-9">
@@ -503,16 +623,9 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
       	</div>
 		
 								
-    </div>
+    </div>-->
     
   </div>
-
-
-</div>
-
-</div>
-
-</div>
 <div class="row">
 	<div class="col-xs-12 col-md-12">
 	<h1 style="font-family: 'Lobster' ">Oficinas para informes y Contrataciones.</h1>
@@ -556,7 +669,14 @@ box-shadow: 11px 3px 5px 0px rgba(222,206,222,0.62);
 	</div>
 </div>
 
-		 		
+</div>
+
+</div>
+
+</div>
+
+
+			
 
 
 
@@ -825,17 +945,18 @@ $('#datepicker2').datepicker();
 				 		$.each(data, function(index, value){
 		 				
 		 		
-				 		var marker = map.addMarker({
+				 		var marker = map.drawOverlay({
 		                lat: value.latitud,
 		                lng: value.longitud,
-		                title: value.nombre,
+		                content:  '<div class="overlay">'+value.nombre+'<div class="overlay_arrow above"></div></div>',
+            			verticalAlign: 'top'
 
 
-		                infoWindow: {
+		               /* infoWindow: {
 		                	content: '<div class="card card-block" style="width:300px;"><div id="card-img"><img src="http://atlas.casasvacacionales.mx/static/cv/images/800x600/'+value.url+'" style="width:100%;height:200px;"></div><h3 class="card-title">' + value.nombre +'</h3><p class="card-text">Capacidad'+value.capacidad_num+' <span class="glyphicon glyphicon-user"></span></p><p>Recamaras : '+value.recamaras_num+'<span class="glyphicon glyphicon-home"></span></p><a href="/'+value.nombre+'/'+value.idcasa+'" target="_blank" class="btn btn-success">Me interesa</a></div>'
-		                }
+		                }*/
 				 		});
-				 		lista = lista + '<div class="col-md-6" id="card" data-cmd="'+value.estado+'"><h2 style="position:absolute;z-index:1000;"><span style="color:white; font: bold 24px/45px Helvetica, Sans-Serif; letter-spacing: -1px; background:rgb(0, 0, 0);background: rgba(0, 0, 0, 0.7); padding:10px;opacity: 0.8">$'+value.costo+'/'+value.iso+'</span></h2><img src="http://atlas.casasvacacionales.mx/static/cv/images/800x600/'+value.url+'" style="position:relative;width:100%; height:250px;"><p>'+value.nombre+'</p><p>Capacidad: '+value.capacidad_num+'<span class="glyphicon glyphicon-user"></span>-Recamaras:'+value.recamaras_num+'<span class="glyphicon glyphicon-home"></span>-Baños:'+value.banos_num+' <span class="glyphicon glyphicon-th-large"></span><a   data-toggle="modal" data-target="#'+value.idcasa+'">.Ver mas...</a></p></div>' +
+				 		lista = lista + '<div id="card" data-cmd="'+value.estado+'"><h2 style="position:absolute;z-index:1000;"><span style="color:white; font: bold 24px/45px Helvetica, Sans-Serif; letter-spacing: -1px; background:rgb(0, 0, 0);background: rgba(0, 0, 0, 0.7); padding:10px;opacity: 0.8">$'+value.costo+'/'+value.iso+'</span></h2><img src="http://atlas.casasvacacionales.mx/static/cv/images/800x600/'+value.url+'" style="position:relative;width:100%; height:250px;"><p>'+value.nombre+'</p><p>Capacidad: '+value.capacidad_num+'<span class="glyphicon glyphicon-user"></span>-Recamaras:'+value.recamaras_num+'<span class="glyphicon glyphicon-home"></span>-Baños:'+value.banos_num+' <span class="glyphicon glyphicon-th-large"></span><a   data-toggle="modal" data-target="#'+value.idcasa+'">.Ver mas...</a></p></div>' +
 				 			'<div class="modal fade" id="'+value.idcasa+'" role="dialog"><div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="padding:35px 50px;"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 style="text-align: center;font-size: 30px;"><span class="glyphicon glyphicon-home"></span>'+value.nombre+'</h4></div><div class="modal-body" style="padding:40px 50px;"><strong><p>Descripcion:</p></strong><p>'+value.ptos_fuertes+'</p><p><strong>Capacidad : </strong>'+value.capacidad_num+'</p><p>'+value.comentarios+'</p><hr><p>Recamaras : '+value.recamaras_num+'</p><p>'+value.recamara_detalles+'</p><hr><p><strong>Baños :</strong> '+value.banos_num+'</p><p><strong>Sala:</strong></p><p>'+value.sala_detalles+'</p></div><div class="modal-footer"><button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button><a href="/'+value.nombre+'/'+value.idcasa+'" target="_blank" class="btn btn-success">Ver casa</a> </div></div></div></div>'
 				 			
 				 		

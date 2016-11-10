@@ -83,7 +83,7 @@ box-shadow:none;
   font-size: 17px;
   color: white;
   opacity: 0.8;
- 
+
 }
 .overlay:hover {
 	opacity: 1.0;
@@ -215,6 +215,7 @@ box-shadow:none;
 
 
 	</div>
+	</div>
 	<div class="row">
 	<div class="col-xs-12 col-md-12">
 	<h1 style="font-family: 'Lobster' ">Oficinas para informes y Contrataciones.</h1>
@@ -258,7 +259,7 @@ box-shadow:none;
 	</div>
 </div>
 
-</div>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		var map = new GMaps({
